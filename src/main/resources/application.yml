@@ -1,0 +1,10 @@
+logging:
+  level:
+    hello: INFO
+    org:
+      springframework:
+        ws: DEBUG
+server:
+  port: 9090
+client:
+  default-uri: http://www.webservicex.com/geoipservice.asmx
