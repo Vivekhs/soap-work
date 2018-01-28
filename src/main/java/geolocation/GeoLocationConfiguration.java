@@ -20,12 +20,18 @@ public class GeoLocationConfiguration {
 		return marshaller;
 	}
 
-	@Bean
-	public GeoLocationClient quoteClient(Jaxb2Marshaller marshaller) {
+	@Bean(name="locationClient")
+	public GeoLocationClient locationClient(Jaxb2Marshaller marshaller) {
 		GeoLocationClient client = new GeoLocationClient();
 		client.setDefaultUri(defaultUri);
 		client.setMarshaller(marshaller);
 		client.setUnmarshaller(marshaller);
+		return client;
+	}
+	
+	@Bean(name="localDefaultClient")
+	public GeoLocationClient localDefaultClient(Jaxb2Marshaller marshaller) {
+		GeoLocationClient client = new GeoLocationClient();
 		return client;
 	}
 

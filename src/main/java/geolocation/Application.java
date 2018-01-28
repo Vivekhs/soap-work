@@ -2,6 +2,7 @@
 package geolocation;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,9 +18,9 @@ public class Application {
 	}
 
 	@Bean
-	CommandLineRunner lookup(GeoLocationClient geoLocationClient) {
+	CommandLineRunner lookup(@Qualifier("locationClient")GeoLocationClient client) {
 		return args -> {
-			GetGeoIPResponse response = geoLocationClient.getIPDetails("192.168.2.250");
+			GetGeoIPResponse response = client.getIPDetails("192.168.2.250");
 			System.out.println(response.getGetGeoIPResult().getReturnCodeDetails());
 		};
 	}
